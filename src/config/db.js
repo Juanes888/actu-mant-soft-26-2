@@ -28,12 +28,13 @@ db.serialize(() => {
         service          TEXT     NOT NULL,
         appointment_date TEXT     NOT NULL,
         status           TEXT     DEFAULT 'Scheduled',
+        weight           REAL,
+        temperature      REAL,
+        diagnosis        TEXT,
         created_at       DATETIME DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (pet_id) REFERENCES pets(id) ON DELETE RESTRICT
     )`);
 
-
-    //TODO: AQUI SE HACE LA MIGRACION 
 
     const stmtOwners = db.prepare('INSERT INTO owners (name, phone) VALUES (?, ?)');
     stmtOwners.run('Juan Pérez',   '300-000-0001'); 
