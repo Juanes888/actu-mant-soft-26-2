@@ -1,0 +1,55 @@
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="h2"><%= title %></h1>
+    <a href="/" class="btn btn-secondary">&larr; Volver al Panel</a>
+</div>
+
+<div class="card shadow-sm mb-4">
+    <div class="card-body">
+        <h5 class="text-primary mb-3">Expediente Médico</h5>
+        <p class="text-muted"><i class="fas fa-info-circle"></i> Los datos históricos son de solo lectura para preservar la cronología e integridad médica clínica.</p>
+        
+        <div class="timeline mt-4">
+            <% if (appointments.length === 0) { %>
+                <div class="text-center py-4">
+                    <p class="text-muted">No se registran visitas previas en el expediente.</p>
+                </div>
+            <% } else { %>
+                <div class="list-group">
+                    <% appointments.forEach(app => { %>
+                        <div class="list-group-item list-group-item-action flex-column align-items-start mb-3 border rounded shadow-sm">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1 text-primary"><%= app.service %></h5>
+                                <small class="text-muted fw-bold"><%= app.appointment_date %></small>
+                            </div>
+                            <p class="mb-1"><strong>Doctor asignado / Estado:</strong> <%= app.status %></p>
+                            
+                            <% if (app.service === 'Consulta Médica') { %>
+                                <div class="bg-light p-3 mt-2 rounded border">
+                                    <h6 class="text-secondary border-bottom pb-2">Detalles Clínicos de la Visita</h6>
+                                    <div class="row mt-2">
+                                        <div class="col-md-3">
+                                            <strong><i class="fas fa-weight"></i> Peso:</strong> <%= app.weight %> kg
+                                        </div>
+                                        <div class="col-md-3">
+                                            <strong><i class="fas fa-thermometer-half"></i> Temp:</strong> <%= app.temperature %> °C
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-12 mt-2">
+                                            <strong><i class="fas fa-stethoscope"></i> Diagnóstico:</strong> 
+                                            <p class="mb-1 bg-white p-2 border rounded text-muted"><%= app.diagnosis || 'No especificado' %></p>
+                                        </div>
+                                        <div class="col-12 mt-2">
+                                            <strong><i class="fas fa-pills"></i> Medicina Recetada:</strong> 
+                                            <p class="mb-0 bg-white p-2 border rounded text-muted"><%= app.medicine || 'Ninguna prescrita' %></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% } %>
+                        </div>
+                    <% }) %>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</div>

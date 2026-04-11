@@ -46,7 +46,11 @@
                         </div>
                         <div class="mb-3">
                             <label for="diagnosis" class="form-label">Diagnóstico</label>
-                            <textarea class="form-control" id="diagnosis" name="diagnosis" rows="3" placeholder="Descripción del diagnóstico..."></textarea>
+                            <textarea class="form-control" id="diagnosis" name="diagnosis" rows="2" placeholder="Descripción del diagnóstico..."></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="medicine" class="form-label">Medicina Recetada</label>
+                            <textarea class="form-control" id="medicine" name="medicine" rows="2" placeholder="Medicamentos a recetar..."></textarea>
                         </div>
                     </div>
 
@@ -72,6 +76,7 @@
         const weight = document.getElementById('weight');
         const temperature = document.getElementById('temperature');
         const diagnosis = document.getElementById('diagnosis');
+        const medicine = document.getElementById('medicine');
         
         if (serviceSelect.value === 'Consulta Médica') {
             medicalFields.style.display = 'block';
@@ -87,6 +92,7 @@
             weight.value = '';
             temperature.value = '';
             diagnosis.value = '';
+            if(medicine) medicine.value = '';
         }
     }
 </script>

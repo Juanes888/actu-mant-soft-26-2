@@ -38,14 +38,18 @@
                                         <div class="col-6"><strong>Peso:</strong> <%= app.weight %> kg</div>
                                         <div class="col-6"><strong>Temp:</strong> <%= app.temperature %>°C</div>
                                         <div class="col-12 mt-1"><strong>Dx:</strong> <%= app.diagnosis %></div>
+                                        <div class="col-12 mt-1"><strong>Rx (Medicina):</strong> <%= app.medicine || 'Ninguna' %></div>
                                     </div>
                                 </div>
                             <% } %>
 
-                            <form action="/delete/<%= app.id %>" method="POST"
-                                onsubmit="return confirm('¿Eliminar esta cita?')">
-                                <button type="submit" class="btn btn-sm btn-outline-danger">Eliminar</button>
-                            </form>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="/history/<%= app.pet_id %>" class="btn btn-sm btn-outline-info">Ver Historial Clínico</a>
+                                <form action="/delete/<%= app.id %>" method="POST"
+                                    onsubmit="return confirm('¿Eliminar esta cita?')">
+                                    <button type="submit" class="btn btn-sm btn-outline-danger">Eliminar</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>

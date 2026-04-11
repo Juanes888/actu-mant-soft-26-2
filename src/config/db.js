@@ -31,6 +31,7 @@ db.serialize(() => {
         weight           REAL,
         temperature      REAL,
         diagnosis        TEXT,
+        medicine         TEXT,
         created_at       DATETIME DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (pet_id) REFERENCES pets(id) ON DELETE RESTRICT
     )`);
